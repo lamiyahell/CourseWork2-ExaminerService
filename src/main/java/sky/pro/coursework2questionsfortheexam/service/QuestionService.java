@@ -1,6 +1,6 @@
 package sky.pro.coursework2questionsfortheexam.service;
 
-import sky.pro.coursework2questionsfortheexam.Question;
+import sky.pro.coursework2questionsfortheexam.model.Question;
 
 import java.util.Collection;
 
@@ -10,5 +10,4 @@ public interface QuestionService {
     Question remove(Question question);
     Collection<Question> getAll();
     Question getRandomQuestion();
-    Question remove(String question);
 }

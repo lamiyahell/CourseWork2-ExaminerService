@@ -1,23 +1,22 @@
 package sky.pro.coursework2questionsfortheexam.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import sky.pro.coursework2questionsfortheexam.Question;
+import org.springframework.web.bind.annotation.*;
+import sky.pro.coursework2questionsfortheexam.model.Question;
 import sky.pro.coursework2questionsfortheexam.service.ExaminerService;
 
 import java.util.Collection;
 
 @RestController
+@RequestMapping("/exam")
 public class ExamController {
-    private ExaminerService examinerService;
+    private final ExaminerService examinerService;
 
     public ExamController(ExaminerService examinerService) {
         this.examinerService = examinerService;
     }
 
-    @GetMapping
-    public Collection<Question> getQuestions(@RequestParam int amount) {
-        return examinerService.getQuestion(amount);
+    @GetMapping("/get/{amount}")
+    public Collection<Question> getQuestions(@PathVariable int amount) {
+        return examinerService.getQuestions(amount);
     }
 }

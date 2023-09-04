@@ -4,13 +4,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sky.pro.coursework2questionsfortheexam.Question;
+import sky.pro.coursework2questionsfortheexam.model.Question;
 import sky.pro.coursework2questionsfortheexam.service.QuestionService;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/exam")
+@RequestMapping("/exam/java")
 public class JavaController {
 
     private final QuestionService service;
@@ -19,18 +19,19 @@ public class JavaController {
         this.service = service;
     }
 
-    @GetMapping("/java/add")
-    private Question addQuestion(@RequestParam String question, @RequestParam String answer) {
+    @GetMapping("/add")
+    private Question add(@RequestParam String question, @RequestParam String answer) {
         return service.add(question, answer);
     }
 
-    @GetMapping("/java/remove")
-    private Question removeQuestion(@RequestParam String question, @RequestParam String answer) {
-        return service.remove(question);
+    @GetMapping("/remove")
+    private Question remove(@RequestParam String question, @RequestParam String answer) {
+        Question questionForRemove = new Question(question, answer);
+        return service.remove(questionForRemove);
     }
 
-    @GetMapping("/java")
-    private Collection<Question> getQuestions() {
+    @GetMapping
+    private Collection<Question> getAll() {
         return service.getAll();
     }
 }

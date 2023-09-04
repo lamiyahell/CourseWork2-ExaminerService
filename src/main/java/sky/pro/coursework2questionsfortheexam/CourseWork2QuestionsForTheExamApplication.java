@@ -9,5 +9,4 @@ public class CourseWork2QuestionsForTheExamApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CourseWork2QuestionsForTheExamApplication.class, args);
 	}
-
 }

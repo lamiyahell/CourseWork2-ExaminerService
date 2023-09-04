@@ -1,4 +1,4 @@
-package sky.pro.coursework2questionsfortheexam;
+package sky.pro.coursework2questionsfortheexam.model;
 
 import java.util.Objects;
 
