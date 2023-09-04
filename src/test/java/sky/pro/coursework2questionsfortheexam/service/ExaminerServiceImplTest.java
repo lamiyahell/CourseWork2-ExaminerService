@@ -6,11 +6,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import sky.pro.coursework2questionsfortheexam.exception.IncorrectQuestionAmountException;
+import sky.pro.coursework2questionsfortheexam.model.Question;
 import sky.pro.coursework2questionsfortheexam.service.impl.ExaminerServiceImpl;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+import java.util.Collection;
+
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.when;
+import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
 import static sky.pro.coursework2questionsfortheexam.service.QuestionTestConstants.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -45,7 +48,6 @@ class ExaminerServiceImplTest {
 
         int questionAmount = MOCK_QUESTIONS.size() - 2;
 
-        assertThat(examinerService.getQuestions(questionAmount))
-                .hasSize(questionAmount);
+        assertThat(examinerService.getQuestions(questionAmount)).hasSize(questionAmount);
     }
 }

@@ -6,8 +6,7 @@ import sky.pro.coursework2questionsfortheexam.model.Question;
 import sky.pro.coursework2questionsfortheexam.exception.QuestionNotFoundException;
 import sky.pro.coursework2questionsfortheexam.service.impl.JavaQuestionService;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 import static sky.pro.coursework2questionsfortheexam.service.QuestionTestConstants.*;
 
 class JavaQuestionServiceTest {
@@ -36,9 +35,9 @@ class JavaQuestionServiceTest {
     public void shouldRemoveQuestion() {
         int beforeCount = questionService.getAll().size();
 
-        assertThat(questionService.add(QUESTION_4))
-                .isEqualTo(QUESTION_1)
-                .isIn(questionService.getAll());
+        assertThat(questionService.remove(QUESTION_4))
+                .isEqualTo(QUESTION_4)
+                .isNotIn(questionService.getAll());
 
         assertThat(questionService.getAll()).hasSize(beforeCount - 1);
     }
